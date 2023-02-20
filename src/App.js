@@ -1,36 +1,33 @@
-import './App.css';
-import React from 'react';
-import { BrowserRouter,Routes, Route} from 'react-router-dom';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import About from './pages/About';
-import Courses from './pages/Courses';
-import Single_Course from './pages/Single_Course';
-import Dashboard from './pages/Dashboard';
-import Error from './pages/Error';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import MainLayout from './pages/MainLayout.jsx';
+import Home from './pages/Home.jsx';
+import About from './pages/About.jsx';
+
+import Products from './pages/Products.jsx';
+import SingleProduct from './pages/SingleProduct.jsx';
+import Error from './pages/Error.jsx';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import './App.css';
 
 function App() {
-  return (
-    <div>
-      <BrowserRouter>
-      <Header/>
-      <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="about" element={<About/>}/>
-        <Route path="dashboard" element={<Dashboard/>}/>
-        <Route path="courses" element={<Courses/>}/>
-        <Route path="courses/:coursesid" element ={<Single_Course/>}/>
-        <Route path="*" element={<Error/>}/>
-      </Routes>
-      <Footer/>
-      </BrowserRouter>
-    </div>
-    
-  )
+	return (
+		<div className='App'>
+			<BrowserRouter>
+				<Routes>
+					<Route path='/' element={<MainLayout />}>
+						<Route index element={<Home />} />
+						<Route path='about' element={<About />} />
+						<Route path='products' element={<Products />} />
+						<Route path='products/:productId' element={<SingleProduct />} />
+						
+						<Route path='*' element={<Error />} />
+					</Route>
+				</Routes>
+			</BrowserRouter>
+		</div>
+	);
 }
 
 export default App;

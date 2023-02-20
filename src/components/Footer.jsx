@@ -1,22 +1,31 @@
-import React from 'react'
+
 import {Link, NavLink} from 'react-router-dom';
 
 const Footer = () => {
   return (
     <footer className='footer'>
-    <div className='container'>
-         <div className='d-flex justify-content-between align-items-center'>
-           <div className='nav nav-pills'>
-           <Link to ='/' className='brand'>Home</Link>
-           <Link to ='courses' className='brand'>Courses</Link>
-           <Link to ='dashboard' className='brand'>Dashboard</Link>
-           <Link to ='about' className='brand'>About</Link>
+      <div className='container'>
 
-           </div>
-         </div>
+        <nav className='d-flex justify-content-center'>
+            <NavLink to='/' 
+              className={(navData) => navData.isActive ? 'nav-link active' : 'nav-link'}
+            >Home</NavLink>
+            <NavLink to='about'
+              className={(navData) => navData.isActive ? 'nav-link active' : 'nav-link'}
+            >About</NavLink>
+            <NavLink to='products'
+              className={(navData) => navData.isActive ? 'nav-link active' : 'nav-link'}
+            >Products</NavLink>
+            <NavLink to='posts'
+              className={(navData) => navData.isActive ? 'nav-link active' : 'nav-link'}
+            >Posts</NavLink>
+        </nav>
+        <div className="copyrights">
+          &copy; 2022 <Link to="/"> WebStylePress</Link> - All Rights Reserved.
+        </div>
       </div>
-      </footer>
-  )
-}
-
-export default Footer
+    </footer>
+    )
+  }
+  
+  export default Footer
